@@ -1,0 +1,45 @@
+:root {
+  /* 主页标题渐变色 */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
+}
+
+/* 隐藏滚动条 */
+:root::-webkit-scrollbar {
+  display: none;
+}
+
+/* logo 高度重新设置 */
+.VPImage.logo {
+  height: 52px;
+}
+
+/* 去除 logo title 背景色 */
+.VPNavBarTitle {
+  background-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+/* iconfont symbol 引入 */
+.icon-font {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  overflow: hidden;
+}
+
+/* span 高亮文字包括 code 代码块的内容 */
+span code {
+  color: inherit !important;
+}
+
+/* -------------------------------------- */
+
+.linear-color {
+  /* background -> background-clip -> color 顺序不能乱, color 和 -webkit-text-fill-color 都可以 */
+  background: -webkit-linear-gradient(120deg, #13b2c1, #d2cf16);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  /* -webkit-text-fill-color: transparent; */
+}
