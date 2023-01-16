@@ -33,6 +33,11 @@ span code {
   color: inherit !important;
 }
 
+/* 给 details 块添加小手 */
+details {
+  cursor: pointer;
+}
+
 /* -------------------------------------- */
 
 .linear-color {
