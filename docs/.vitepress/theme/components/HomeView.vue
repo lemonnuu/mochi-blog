@@ -138,11 +138,11 @@ const onHandleClickTags = (target) => {
   <div class="home-view">
     <div class="h-screen relative overflow-hidden">
       <img class="filter-img min-h-screen align-bottom dark:opacity-[0.6]" :src="imgSrc" alt="" />
-      <p
+      <div
         ref="typeItWrap"
         id="type-it"
         class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-xl md:text-4xl font-bold duration-1000"
-      ></p>
+      ></div>
     </div>
     <div id="blogblog" class="flex flex-col mt-[5%] md:mt-0 md:pt-[72px] mx-[5%] md:flex-row md:mx-[12%]">
       <!-- 博客列表 -->
@@ -175,6 +175,11 @@ const onHandleClickTags = (target) => {
         @clickTags="onHandleClickTags"
       ></HomeInfo>
     </div>
+  </div>
+
+  <!-- 为了让 algolia 能够检索到博客列表 -->
+  <div class="absolute left-0 bottom-0 -z-10 hidden">
+    <a v-for="item in blogList" :href="withBase(item.link)" @click.prevent></a>
   </div>
 </template>
 

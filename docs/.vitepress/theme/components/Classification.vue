@@ -90,7 +90,7 @@ const toJumpLink = (target) => {
     ></BlogCard>
   </div>
   <div v-else class="NotFound">
-    <p class="code">sorry</p>
+    <div class="code">sorry</div>
     <h1 class="title">CATEGORY LIST IS EMPTY</h1>
     <div class="divider" />
     <blockquote class="quote">You can add classifications to list by adding classifications frontmatter.</blockquote>

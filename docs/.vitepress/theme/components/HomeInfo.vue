@@ -57,15 +57,15 @@ onMounted(() => {
       />
       <span class="mt-3 font-bold text-lg">{{ frontmatter.name }}</span>
       <div class="flex w-full justify-center items-center mt-1">
-        <p class="w-[30%] flex flex-col items-center justify-center">
+        <div class="w-[30%] flex flex-col items-center justify-center">
           <span class="text-xl font-medium">{{ articleCount }}</span>
           <span class="text-xs font-medium">Articles</span>
-        </p>
-        <p class="h-[2.75rem] border-r border-zinc-600 mx-4"></p>
-        <p class="w-[30%] flex flex-col items-center justify-center">
+        </div>
+        <div class="h-[2.75rem] border-r border-zinc-600 mx-4"></div>
+        <div class="w-[30%] flex flex-col items-center justify-center">
           <span class="text-xl font-medium">{{ tagsList.length }}</span>
           <span class="text-xs font-medium">Tags</span>
-        </p>
+        </div>
       </div>
       <ul class="flex items-center justify-center mt-4 mb-1">
         <li v-for="item in frontmatter.links" :key="item.icon" class="mx-2 cursor-pointer hover:scale-125 duration-150">
