@@ -26,8 +26,9 @@ const config = async () => {
     socialLinks: [{ icon: 'github', link: 'https://github.com/lemonnuu' }],
     algolia: {
       // 搜索功能
-      apiKey: 'your_api_key',
-      indexName: 'index_name',
+      appId: '3R8QZZ9QKK',
+      apiKey: '3625a6a509758d842aa470c20a981c1c',
+      indexName: 'mochi',
     },
     footer: {
       message: "Mochi's personal blog.",

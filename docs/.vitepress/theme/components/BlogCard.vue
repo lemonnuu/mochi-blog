@@ -1,5 +1,6 @@
 <script setup>
 import { randomRGB } from '../utils/color'
+import { withBase } from 'vitepress'
 const props = defineProps({
   data: {
     type: Object,
@@ -17,9 +18,9 @@ const emit = defineEmits(['click'])
     @click="emit('click', data)"
     class="card-wrap bg-white dark:bg-zinc-800 rounded-md shadow dark:shadow-slate-700 border border-zinc-100 dark:border-zinc-800 mb-[5%] md:mb-[3%] pl-[5%] flex flex-col pb-[4%] cursor-pointer group hover:shadow-md hover:border-zinc-300 hover:scale-105 duration-300"
   >
-    <p class="card-title mt-[6%] text-lg font-bold">
+    <a class="card-title mt-[6%] text-lg font-bold" :href="`${withBase(data.link)}`" @click.prevent>
       {{ data.title }}
-    </p>
+    </a>
     <div class="mt-[4%] flex flex-wrap text-sm text-zinc-400">
       <div v-if="data.author" class="flex items-center justify-center mr-8 mb-1">
         <svg class="icon-font mr-3" aria-hidden="true">
