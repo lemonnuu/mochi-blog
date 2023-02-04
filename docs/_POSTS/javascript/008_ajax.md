@@ -198,6 +198,19 @@ xhr.ontimeout = () => {
 }
 ```
 
+### xhr.overrideMimeType
+
+overrideMimeType()方法用于重写 XHR 响应的 MIME 类型。响应的 MIME 类型决定了 XHR 对象如何处理响应,如果有办法覆盖服务器返回的类型, 是很有用的。
+
+假设服务器实际发送了 XML 数据, 但响应头设置的 MIME 类型是 text/plain。结果就会导致虽然数据是 XML, 但 responseXML 属性值是 null。此时调用 overrideMimeType()可以保证将响应当成 XML 而不是纯文本来处理:
+
+```js
+xhr.overrideMimeType('text/xml')
+xhr.send(null)
+```
+
+为了正确覆盖响应的 MIME 类型, 必须在调用 send()之前调用 overrideMimeType()。
+
 ## 进度事件
 
 Progress Events 是 W3C 的工作草案, 定义了客户端 - 服务器端通信。这些事件最初只针对 XHR, 现在也推广到了其他类似的 API。有以下 6 个进度相关的事件:
