@@ -230,7 +230,7 @@ xhr.open('get', 'test.json', true)
 xhr.send(null)
 ```
 
-### xhr.onprogress(进度)
+### xhr.onprogress(响应进度)
 
 progress 事件会反复触发, 每次触发时, onprogress 事件处理程序都会收到 event 对象, 其 target 属性是 XHR 对象, 且包含 3 个额外属性:
 
@@ -243,5 +243,23 @@ progress 事件会反复触发, 每次触发时, onprogress 事件处理程序�
 ```js
 xhr.onprogress = (event) => {
   const progress = ((event.position / event.totalSize) * 100).toFixed(2)
+}
+```
+
+### xhr.upload(上传进度)
+
+xhr.upload 用来表示上传的进度, 它是不透明的。但是可以通过对其绑定事件来追踪它的进度:
+
+- onloadstart : 获取开始
+- onprogress : 数据传输进行中
+- onabort : 获取操作终止
+- onerror : 获取失败
+- onload : 获取成功
+- ontimeout : 获取操作在用户规定的时间内未完成
+- onloadend : 获取完成（不论成功与否）
+
+```js
+xhr.upload.onprogress = () => {
+  // ...
 }
 ```
