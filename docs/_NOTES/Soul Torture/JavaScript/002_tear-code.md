@@ -1,4 +1,4 @@
-# 手撕代码篇
+# 手撕代码
 
 [[toc]]
 
@@ -105,3 +105,138 @@ function instanceOf(a, b) {
 :::tip 答案
 [见这里](../../../_POSTS/javascript/007_handwriting-promise.md)
 :::
+
+## 实现一个简单的 Ajax
+
+:::info 前情提要
+首先得熟悉 XMLHttpRequest 的 API, 可查看[这个帖子](../../../_POSTS/javascript/008_ajax.md)。
+:::
+
+```js
+const ajax = (url, method = 'GET', data = null) => {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+          resolve(JSON.parse(xhr.responseText))
+        } else if (xhr.status === 404) {
+          reject(new Error('404 Not Found'))
+        } else {
+          reject(new Error(xhr.status))
+        }
+      }
+    }
+    xhr.open(method, url, true)
+    xhr.send(data)
+  })
+}
+```
+
+## 手写防抖、节流
+
+:::info 前情提要
+
+- 防抖 : 用户输入结束或暂停时, 才会触发 change 事件
+- 节流 : 无论触发事件有多频繁, 以时间段的第一次为准
+
+:::
+
+```js
+// 防抖
+function debounce(fn, delay = 500) {
+  let timer = null
+  return function (...args) {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, args)
+      timer = null
+    }, delay)
+  }
+}
+// 节流
+function throttle(fn, delay = 500) {
+  let timer = null
+  return function (...args) {
+    if (timer) {
+      return
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, args)
+      timer = null
+    }, delay)
+  }
+}
+```
+
+## 手写深度比较, 模拟 lodash 的 isEqual
+
+:::info 前情提要
+主要在于 {a: 1} 与 {a: 1} 要返回 true。
+:::
+
+```js
+const isObject = (target) => typeof target === 'object' && target !== null
+const isEqual = (obj1, obj2) => {
+  // 只要有一个不是对象, 直接全等判断即可
+  if (!isObject(obj1) || !isObject(obj2)) {
+    return obj1 === obj2
+  }
+  // 1. 如果都是对象且引用也一样, 就肯定相等
+  if (obj1 === obj2) {
+    return true
+  }
+  // 2. 否则, 判断属性个数是否一样
+  const keys1 = Object.keys(obj1)
+  const keys2 = Object.keys(obj2)
+  if (keys1.length !== keys2.length) {
+    return false
+  }
+  // 3. 属性个数一样就进行递归
+  for (key of keys1) {
+    const res = isEqual(obj1[key], obj2[key])
+    if (!res) {
+      return false
+    }
+  }
+  return true
+}
+```
+
+## 手写 flat 函数扁平化数组
+
+:::info 前情提要
+实现的方法有很多种, 这里讲 concat 方法拍平数组, 如 `[].concat([1, 2])` 会自动"消融"一层。
+:::
+
+```js
+// 常规版
+function flat(arr) {
+  // 1. 验证 arr 中还有没有深层数组
+  const isDeep = arr.some((item) => item instanceof Array)
+  // 2. 没有直接返回
+  if (!isDeep) {
+    return arr
+  }
+  const res = Array.prototype.concat.apply([], arr)
+  // 3. 递归
+  return flat(res)
+}
+
+// 简洁版
+function flat(arr) {
+  return arr.reduce((pre, cur) => {
+    return pre.concat(Array.isArray(cur) ? flat(cur) : cur)
+  }, [])
+}
+```
+
+## 实现数组去重函数 unique
+
+```js
+function unique(arr) {
+  return [...new Set(arr)]
+}
+```
