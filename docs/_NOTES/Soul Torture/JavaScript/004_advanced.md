@@ -51,3 +51,52 @@
 4. API 使用不同, JavaScript 操作 cookie 只能通过 document.cookie, 难以使用; 而 localStorage 与 sessionStorage 有较全的 API, 如 setItem()、getItem()、removeItem()、clear() 等
 
 :::
+
+## Ajax、Fetch 和 Axios 有什么区别?
+
+:::tip 答案
+
+三者都用于网络请求, 但是处于不同维度。
+
+- Ajax(Asynchronous JavaScript and XML) 是一种技术统称
+- Fetch 是一个原生 API
+- Axios 是一个第三方库
+
+:::
+
+## 垃圾回收机制?
+
+:::info 前情提要
+什么是垃圾回收?
+
+通过自动内存管理实现内存分配和闲置资源回收。
+
+基本思路: 确定哪个变量不会再使用, 然后释放它占用的内存。
+:::
+
+:::tip 答案
+
+- 引用记数 : 循环引用会造成内存泄漏
+- **标记清理**
+
+:::
+
+## JS 内存泄漏如何检测?场景有哪些?
+
+:::tip 答案
+
+可使用 Chrome devTools 的 Performance 和 Memory 工具来检测 JS 内存。
+
+场景: (以 Vue 为例)
+
+- 被全局变量、函数引用, 但组件销毁时未清除
+- 被全局事件、定时器引用, 但组件销毁时未清除
+- 被自定义事件引用, 但组件销毁时未清除
+
+:::
+
+## 闭包是内存泄漏嘛?
+
+:::tip 答案
+虽然闭包影响的变量不会被垃圾回收, 但它不是内存泄漏。内存泄漏是非预期的, 而闭包是预期的。
+:::

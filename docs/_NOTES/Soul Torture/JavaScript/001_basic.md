@@ -232,3 +232,125 @@ parseInt(3, 2)
 3. Object.create({...}) 可指定原型
 
 :::
+
+## 箭头函数的缺点?什么时候不能用箭头函数?
+
+:::tip 答案
+
+箭头函数的缺点:
+
+- 没有 arguments
+- 无法通过 apply、call、bind 改变 this
+
+什么时候不能用箭头函数:(其实就是有关 this 的考量)
+
+- 对象方法
+- 对象原型
+- 构造函数
+- 动态上下文的回调函数
+- Vue 生命周期和 method
+
+:::
+
+## for...in 与 for...of 有什么区别
+
+:::info 前情提要
+
+- 可枚举 : 属性具有 enumerable 特性
+- 可迭代 : 目标具有 [Symbol.iterator] 属性
+
+:::
+
+:::tip 答案
+
+- for...in 用于可枚举数据, 如对象、数组、字符串, 得到 key, 且可以遍历原型上的属性
+- for...of 用于可迭代数据, 如数组、字符串、Map、Set, 得到 value
+
+:::
+
+## for await...of 有什么作用?
+
+:::tip 答案
+for await...of 用于遍历多个 Promise, 有点像遍历 Promise.all() 的结果。
+:::
+
+:::code-group
+
+```js [举个栗子]
+function createPromise(value, time) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(value), time)
+  })
+}
+
+;(async function () {
+  const p1 = createPromise(1000, 1000)
+  const p2 = createPromise(5000, 5000)
+  const p3 = createPromise(3000, 3000)
+  const list = [p1, p2, p3]
+  for await (const res of list) {
+    console.log(res)
+  }
+})()
+
+// 1 秒后打印 1000
+// 5 秒后打印 5000
+// 接着立马打印 3000
+```
+
+:::
+
+## 类数组转化为数组?
+
+:::info 前情提要
+常见的类数组:
+
+- 函数中的 arguments
+- HTMLCollection
+- NodeList
+
+:::
+
+:::tip 答案
+
+- Array.from(list)
+- Array.prototype.slice.call(list)
+- [...list]
+
+:::
+
+## JS 严格模式有什么特点?
+
+:::info 前情提要
+
+开启严格模式:
+
+```js
+'use strict' // 全局开启
+
+function fn() {
+  'use strict' // 某个函数开启
+}
+```
+
+:::
+
+:::tip 答案
+
+- 全局变量必须先声明 (var)
+- 禁止使用 with
+- eval 拥有自己独立的作用域
+- 禁止 this 指向 window
+- 函数参数不能重名
+
+:::
+
+## 遍历一个数组用 for 和 forEach 哪个更快?
+
+:::tip 答案
+for 更快, forEach 每次都要创建一个函数来调用, 而 for 不会创建函数, 函数需要独立的作用域, 会有额外的开销。
+:::
+
+:::info 提一嘴
+越"低级"的代码, 性能往往越好。虽然 for 性能更好, 但是使用 forEach 的可维护性更强。
+:::

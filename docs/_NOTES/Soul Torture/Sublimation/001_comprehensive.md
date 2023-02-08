@@ -51,3 +51,37 @@
   - 节流 throttle 防抖 debounce
 
 :::
+
+## 请描述一下 TCP 的三次握手和四次挥手?
+
+:::info 前情提要
+为什么 TCP 需要进行三次握手? 确保双方都有收发消息的能力。
+:::
+
+![](../../../images/NOTES/Soul%20Torture/Sublimation/001_tcp.svg)
+
+:::tip 答案
+
+TCP 三次握手:
+
+- Client 发包, Server 接收 (Server: 有 Client 找我)
+- Server 发包, Client 接收 (Client: Server 已经收到信息了)
+- Client 发包, Server 接收 (Server: Client 要准备发送了)
+
+TCP 四次挥手:
+
+- Client 发包, Server 接收 (Server: Client 已请求结束)
+- Server 发包, Client 接收 (Client: Server 已收到, 我等待它关闭)
+- Server 发包, Client 接收 (Client: Server 此时可以关闭连接了)
+- Client 发包, Server 接收 (Server: 可以关闭了)
+
+:::
+
+## HTTP 跨域请求时为何发送 options 请求
+
+:::tip 答案
+
+- options 请求, 是跨域请求之前的预检查, 旨在查询 server 端支持哪些请求方法等
+- 它是浏览器自行发起的, 无需我们干预, 不会影响实际的功能
+
+:::
