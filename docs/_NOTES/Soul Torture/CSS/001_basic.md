@@ -14,3 +14,16 @@
 - vh : 屏幕高度的 1% (vmin : vw 和 vh 的最小值, vmax : vw 和 vh 的最大值)
 
 :::
+
+## 如何创建一个 BFC?
+
+:::tip 答案
+
+- 根节点 &lt;html&gt;
+- flot: left/right;
+- overflow: auto/scroll/hidden;
+- display: inline-block/table/table-row/table-cell;
+- display: flex/grid; 的直接子元素
+- position: absolute/fixed;
+
+:::
