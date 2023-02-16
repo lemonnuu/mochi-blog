@@ -1,6 +1,6 @@
 ---
 date: '2023-01-14 15:18:37'
-title: Vue3 の源码优化
+title: Vue3 の 优化
 titleTemplate: false
 author: Mochi
 outline: [2, 4]
@@ -10,11 +10,13 @@ tags:
   - vue
 ---
 
-# Vue3 の源码优化
+# Vue3 の 优化
 
-> 源码层面的优化主要体现在 monorepo 和 TypeScript 管理和开发源码。
+![vue3 的优化](../../images/POSTS/vue/001_vue3-optimization.svg)
 
-## 目录结构
+## 源码优化
+
+源码的优化主要体现在 monorepo 和 TypeScript 管理和开发源码, 这样做的目的是提升自身代码的可维护性。
 
 :::code-group
 
@@ -80,7 +82,7 @@ vue2.6.14/
 
 :::
 
-## 更好的代码管理方式 monorepo
+### 更好的代码管理方式 monorepo
 
 首先, 源码的优化体现在代码管理方式上。
 
@@ -91,7 +93,7 @@ vue2.6.14/
 
 另外一些 package (比如 reactivity 响应式库) 是可以独立于 Vue.js 使用的, 这样用户如果只想使用 Vue3 的响应式能力, 可以单独依赖这个响应式库而不用去依赖整个 Vue.js, 减小了引用包的体积大小, 而 Vue2 是做不到这一点的。
 
-## TypeScript 重构项目
+### TypeScript 重构项目
 
 其次, 源码的优化还体现在 Vue3 自身采用了 TypeScript 开发。
 
@@ -108,3 +110,16 @@ const propOptions: any = vm.$options.props // wtf flow?
 这里 Flow 并没有正确推导出 vm.$options.props 的类型, 从而开发人员不得不强制申明 propsOptions 的类型为 any, 显得很不合理。
 
 而 TypeScript 提供了更好的类型检查, 能支持复杂的类型推导。源码使用 TypeScript 编写, 也省去了单独维护 d.ts 文件的麻烦。就整个 TypeScript 的生态来看, TypeScript 团队也是越做越好, TypeScript 本身保持着一定频率的迭代和更新, 支持的 feature 也越来越多。
+
+## 性能优化
+
+### 源码体积优化
+
+我们知道, JavaScript 包体积越小, 意味着网络传输时间越短, JavaScript 引擎解析包的速度也越快。所以 Vue3 优化了引入源码的包体积大小:
+
+- 移除了一些冷门的 feature (例如 filter、inline-template 等)
+- 支持 tree shaking, 减少打包体积
+
+### 数据劫持优化
+
+### 编译优化
