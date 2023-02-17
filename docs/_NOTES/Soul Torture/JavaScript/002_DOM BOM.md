@@ -4,7 +4,7 @@
 
 ## HTMLCollection 和 NodeList 区别?
 
-![HTMLCollection 和 NodeList](../../../images/NOTES/Soul%20Torture/JavaScript/001_HTMLCollection-NodeList.png)
+![HTMLCollection 和 NodeList](../../../images/NOTES/soul-torture/JavaScript/001_HTMLCollection-NodeList.png)
 
 :::tip 答案
 

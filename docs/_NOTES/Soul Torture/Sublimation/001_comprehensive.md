@@ -58,7 +58,7 @@
 为什么 TCP 需要进行三次握手? 确保双方都有收发消息的能力。
 :::
 
-![](../../../images/NOTES/Soul%20Torture/Sublimation/001_tcp.svg)
+![](../../../images/NOTES/soul-torture/Sublimation/001_tcp.svg)
 
 :::tip 答案
 
@@ -135,7 +135,7 @@ wsServer.on('connection', (ws) => {
 
 :::
 
-![websocket](../../../images/NOTES/Soul%20Torture/Sublimation/002_websocket.png)
+![websocket](../../../images/NOTES/soul-torture/Sublimation/002_websocket.png)
 
 :::tip 答案
 
