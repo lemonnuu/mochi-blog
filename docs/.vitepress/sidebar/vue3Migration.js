@@ -7,7 +7,10 @@ const vue3MigrationSidebar = [
   {
     text: '模板指令',
     collapsible: true,
-    items: [{ text: 'v-model', link: '/_NOTES/Vue3 Migration/Template Directives/001_v-model' }],
+    items: [
+      { text: 'v-model', link: '/_NOTES/Vue3 Migration/Template Directives/001_v-model' },
+      { text: 'key 使用改变', link: '/_NOTES/Vue3 Migration/Template Directives/002-key-attribute' },
+    ],
   },
 ]
 
