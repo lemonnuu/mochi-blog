@@ -28,6 +28,15 @@ const vue3MigrationSidebar = [
       },
     ],
   },
+  {
+    text: '组件',
+    collapsible: true,
+    items: [
+      { text: '函数式组件', link: '/_NOTES/Vue3 Migration/Component/001_functional-components' },
+      { text: '异步组件', link: '/_NOTES/Vue3 Migration/Component/002_async-components' },
+      { text: 'emits 选项', link: '/_NOTES/Vue3 Migration/Component/003_emits-option' },
+    ],
+  },
 ]
 
 module.exports = { '/_NOTES/Vue3 Migration/': vue3MigrationSidebar }
