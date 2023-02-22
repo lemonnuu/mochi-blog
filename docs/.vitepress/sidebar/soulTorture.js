@@ -19,7 +19,10 @@ const soulTortureSidebar = [
     text: 'Vue',
     collapsed: true,
     collapsible: true,
-    items: [{ text: 'basic knowledge', link: '/_NOTES/Soul Torture/Vue/001_basic' }],
+    items: [
+      { text: 'basic knowledge', link: '/_NOTES/Soul Torture/Vue/001_basic' },
+      { text: 'temporary', link: '/_NOTES/Soul Torture/Vue/002_draft' },
+    ],
   },
   {
     text: 'Node',
