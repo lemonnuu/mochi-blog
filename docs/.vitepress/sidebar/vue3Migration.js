@@ -15,6 +15,19 @@ const vue3MigrationSidebar = [
       { text: 'v-on.native 移除', link: '/_NOTES/Vue3 Migration/Template Directives/005_v-on-native-modifier-removed' },
     ],
   },
+  {
+    text: '渲染函数',
+    collapsible: true,
+    items: [
+      { text: '渲染函数 API', link: '/_NOTES/Vue3 Migration/Render Function/001_render-function-api' },
+      { text: '插槽统一', link: '/_NOTES/Vue3 Migration/Render Function/002_slots-unification' },
+      { text: '$listeners 合并到 $attrs', link: '/_NOTES/Vue3 Migration/Render Function/003_listeners-removed' },
+      {
+        text: '$attrs 包含 class & style',
+        link: '/_NOTES/Vue3 Migration/Render Function/004_attrs-includes-class-style',
+      },
+    ],
+  },
 ]
 
 module.exports = { '/_NOTES/Vue3 Migration/': vue3MigrationSidebar }
