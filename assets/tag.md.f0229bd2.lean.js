@@ -1,1 +1,0 @@
-import{_ as t,c as a,o as e}from"./app.ef610d19.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{"layout":"page","page":"tag"},"headers":[],"relativePath":"tag.md","lastUpdated":1673163682000}'),o={name:"tag.md"};function r(s,c,n,p,d,_){return e(),a("div")}const m=t(o,[["render",r]]);export{l as __pageData,m as default};
