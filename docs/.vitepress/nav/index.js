@@ -6,6 +6,7 @@ const nav = [
       { text: 'Build Tools', link: '/_NOTES/Build Tools/rollup/01_pre' },
       { text: 'Soul Torture', link: '/_NOTES/Soul Torture/JavaScript/001_basic' },
       { text: 'Vue3 Migration', link: '/_NOTES/Vue3 Migration/Guide/001_pre' },
+      { text: 'TypeScript', link: '/_NOTES/TypeScript/common/001_pre' },
     ],
   },
   // 面试相关, 自动生成 nav 和 siderbar
