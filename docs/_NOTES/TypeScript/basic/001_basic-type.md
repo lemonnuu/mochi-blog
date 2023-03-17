@@ -191,7 +191,7 @@ never 类型是任何类型的子类型, 可以赋值给任何类型。反过来
 
 ## 类型别名
 
-当需要经常复用一个类型时, 可能需要用到类型别名。类型别名使用 type 关键字定义。
+当需要经常复用一个类型或需要借助泛型来实现一些"高级类型"的话, 可能需要用到类型别名。类型别名使用 type 关键字定义。
 
 ```ts
 type Name = string
@@ -200,7 +200,7 @@ const username: Name = 'judy'
 const age: Age = 18
 ```
 
-类型别名常用于联合类型。
+类型别名常用于联合类型以及条件类型或与泛型一起使用。
 
 ## 类型注解和类型推断
 
@@ -270,3 +270,33 @@ let strLength: number = (someValue as string).length
 两种形式是等价的, 使用哪一种取决于个人喜好。但是需要注意的是, 在使用 JSX 时, 只有 as 语法断言是被允许的。
 
 所以建议一直采用 as 断言语法, 避免错误。
+
+## 非空断言
+
+前面说过, 默认情况下, null 与 undefined 可以赋值给除 never 外的任何类型。
+
+即使是开启了 `strictNullChecks` 编译选项, 某些场景下可能也会遇到: 包含它的联合类型:
+
+```ts
+let ele = document.getElementById('app')
+```
+
+ele 类型推断为 `HTMLElement | null`, 这是正确的。但是有时候我们能非常肯定 ele 一定存在, 比如在页面渲染完成后才执行的代码。不过可惜的是, TS 并不知道。
+
+```ts
+ele.innerHTML = 'hello' // “a”可能为 “null”
+```
+
+TS 会抛出 a 可能为 null 的错误, 我们可以在使用前判断一下 ele 是否存在。
+
+```ts
+if (ele) {
+  ele.innerHTML = 'hello'
+}
+```
+
+很明显, 它非常啰嗦。更好的做法是使用非空断言, 语法是添加 ! 后缀。
+
+```ts
+ele!.innerHTML = 'hello'
+```
