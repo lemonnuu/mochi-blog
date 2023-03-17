@@ -33,7 +33,7 @@ function test(arg: UnionType) {
 
 #### typeof 收窄
 
-typeof 类型保护只有两种形式能够识别:
+typeof 类型保护有两种形式能够识别:
 
 - `typeof v === typename`
 - `typeof v !== typename`
@@ -46,8 +46,6 @@ function test(params: string | number) {
   }
 }
 ```
-
-并且 typename 只能是 `number`、`string`、`boolean` 或 `symbol`, 其余的 typeof 检测结果并不可靠, 所以不作为类型保护。
 
 #### instanceof 收窄
 
@@ -74,20 +72,86 @@ function test(params: Date | RegExp | DateOrRegExp) {
 }
 ```
 
+#### in 语法收窄
+
+in 操作符可以安全的检查一个对象上是否存在一个属性, 也可被作为类型保护使用。
+
+```ts
+interface Fish {
+  swim: () => {}
+}
+interface Bird {
+  fly: () => {}
+}
+function test(animal: Fish | Bird) {
+  if ('swim' in animal) {
+    return animal.swim()
+  }
+  return animal.fly()
+}
+```
+
 #### 真值收窄
+
+```ts
+function test(params?: string) {
+  params.toUpperCase() // ❌
+  if (params) {
+    params.toUpperCase() // ✔️
+  }
+}
+```
 
 #### 相等收窄
 
-#### in 语法收窄
+=== 全等运算符也可用于类型保护。
+
+```ts
+function test(x: string | number, y: string | boolean) {
+  if (x === y) {
+    x.toUpperCase() // ✔️
+  }
+}
+```
 
 ### 自定义类型保护
 
-```ts
-function isFish(pet: Fish | Bird): pet is Fish {
-  return (<Fish>pet).swim !== undefined
+我们也可以自定义一个类型保护, 只需要简单地定义一个函数, 它的返回值是一个 类型谓词:
+
+```ts {7}
+interface Fish {
+  swim: () => {}
+}
+interface Bird {
+  fly: () => {}
+}
+function isFish(animal: Fish | Bird): animal is Fish {
+  return !!(animal as Fish).swim
+}
+function test(animal: Fish | Bird) {
+  if (isFish(animal)) {
+    return animal.swim()
+  }
+  return animal.fly()
 }
 ```
 
 ## 交叉类型
 
-交叉类型是将多个类型合并为一个类型。这可以把现有的多种类型叠加到一起成为一种类型, 它包含了所需的所有类型的特性。例如, Person & Serializable & Loggable 同时是 Person 和 Serializable 和 Loggable。 就是说这个类型的对象同时拥有了这三种类型的成员。
+交叉类型是将多个类型合并为一个类型。这可以把现有的多种类型叠加到一起成为一种类型, 它包含了所需的所有类型的特性。
+
+```ts {8}
+interface Circle {
+  radius: number
+}
+interface Colorful {
+  color: string
+}
+
+type ColorfulCircle = Circle & Colorful
+// colorfulCircle 必须同时包含 radius 和 color 属性
+const colorfulCircle: ColorfulCircle = {
+  radius: 1,
+  color: 'yellow',
+}
+```
