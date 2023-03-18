@@ -64,3 +64,18 @@ tags:
 18. `$attrs` 保留原始名, 然后事件前面加 `on`, 如 `onClick`
 19. 插件本质上就是一个拥有 install 方法的对象或函数, install 方法的第一个参数是 app, 第二个参数是传递给 app.use() 方法的额外参数 options
 20. 自定义指令: `const vFocus = {...}`
+
+## Vue Router
+
+1. 模式: History、Hash、Memory (手写一下原理)
+2. 和 keep-alive 结合
+3. 路由守卫、结合 元数据, 比如做一些鉴权
+4. VueRouter4 新增的动态路由, 也就是可以增加或者是删除一些路由
+
+https://segmentfault.com/a/1190000037540533
+
+## 路线
+
+VueRouter -> Vuex -> Pinia -> Vue
+TypeScript -> 算法
+CSS -> HTTP -> JS
