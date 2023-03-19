@@ -26,9 +26,9 @@ const typeScriptSidebar = [
     text: '进阶',
     collapsible: true,
     items: [
-      { text: '条件类型', link: '/_NOTES/TypeScript/basic/001_condition-type' },
-      { text: '装饰器', link: '/_NOTES/TypeScript/basic/002_decorator' },
-      { text: '类型兼容性', link: '/_NOTES/TypeScript/basic/003_type-compatibility' },
+      { text: '条件类型', link: '/_NOTES/TypeScript/advanced/001_condition-type' },
+      { text: '装饰器', link: '/_NOTES/TypeScript/advanced/002_decorator' },
+      { text: '类型兼容性', link: '/_NOTES/TypeScript/advanced/003_type-compatibility' },
     ],
   },
 ]
