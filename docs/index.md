@@ -5,7 +5,7 @@ name: Mochi
 pageSize: 8
 links:
   - icon: icon-github
-    link: https://github.com/lemonnuu/zhaoha
+    link: https://github.com/lemonnuu/mochi-blog
   - icon: icon-bilibili
     link: https://space.bilibili.com/650511936?spm_id_from=333.1007.0.0
   - icon: icon-juejin
