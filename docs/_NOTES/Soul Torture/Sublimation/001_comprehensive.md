@@ -216,7 +216,7 @@ wsServer.on('connection', (ws) => {
 
 ## H5 页面如何进行首屏优化?
 
-:::前置知识
+:::info 前置知识
 
 - 路由懒加载
   - 只适用于 SPA
